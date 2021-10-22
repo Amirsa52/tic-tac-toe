@@ -44,6 +44,7 @@ const App = () => {
   const [counter, setCounter] = useState(0);
   let val = '';
   let x = 1;
+  let am = 0;
   const ref = useRef();
   const valCheck = i => {
     console.log('aa gya function me');

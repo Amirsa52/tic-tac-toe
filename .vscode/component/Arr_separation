@@ -1,0 +1,94 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
+import React, {useEffect, useState} from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+  TextInput,
+} from 'react-native';
+
+import {
+  Colors,
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+const App = () => {
+  let arr = [
+    '2-4 f: cfkmf',
+    '5-11 t: glhbttzvzttkdx',
+    '9-12 m: mmmmmmmmmmmmm',
+    '11-14 k: kkkkkkkkkkkkkkk',
+  ];
+  let arr1;
+  const [counter, setCounter] = useState(0);
+  const arrSeparation = () => {
+    for (let i = 0; i < arr.length; i++) {
+      subs = arr[i].substring(arr[i].lastIndexOf(' ') + 1);
+      console.log('subs', subs);
+      subs1 = arr[i].substring(0, arr[i].indexOf('-'));
+      console.log('firstdigit', subs1);
+      subs2 = arr[i].substring(arr[i].indexOf('-') + 1, arr[i].indexOf(' '));
+      console.log('secondDigit', subs2);
+      subs3 = arr[i].substring(arr[i].indexOf(' ') + 1, arr[i].indexOf(':'));
+      console.log('char', subs3);
+      arr1 = subs.split('');
+      charValidating();
+      console.log(arr1);
+    }
+  };
+  useEffect(() => {
+    arrSeparation();
+  }, []);
+  const charValidating = () => {
+    let count = 0;
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] == subs3) {
+        count++;
+      }
+    }
+    if (count == subs1 || count == subs2) {
+      setCounter(counter + 1);
+    }
+    console.log('count', count);
+    console.log('counter', counter);
+  };
+  return (
+    <View>
+      <TextInput style={{color: 'black'}}>{counter}</TextInput>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  highlight: {
+    fontWeight: '700',
+  },
+});
+
+export default App;
